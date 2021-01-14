@@ -7,6 +7,7 @@ import Hemskarm from "./assets/delar/Hemskarm";
 import Ansvarskarm from "./assets/delar/Ansvarskarm";
 import Profil from "./assets/delar/Profil";
 
+// hej
 // function HomeScreen({ navigation }) {
 //   return (
 //     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
