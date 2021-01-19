@@ -7,26 +7,6 @@ import Hemskarm from "./assets/delar/Hemskarm";
 import Ansvarskarm from "./assets/delar/Ansvarskarm";
 import Profil from "./assets/delar/Profil";
 
-// function HomeScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Home Screen</Text>
-//       <Button
-//         title="Go to Details"
-//         onPress={() => navigation.navigate("Details")}
-//       />
-//     </View>
-//   );
-// }
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
-    </View>
-  );
-}
-
 const Stack = createBottomTabNavigator();
 
 function App() {

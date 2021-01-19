@@ -1,0 +1,5 @@
+Snart:
+Gör en "widgetkomponent" till hemsidan
+
+Senare:
+Gör animationer till widgetkomponent
