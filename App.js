@@ -1,13 +1,14 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Hemskarm from "./assets/delar/Hemskarm";
-import Ansvarskarm from "./assets/delar/Ansvarskarm";
-import Profil from "./assets/delar/Profil";
-import KalenderSkarm from "./assets/delar/KalenderSkarm";
-import NotifikationsSkarm from "./assets/delar/NotifikationsSkarm";
-import PoangJaktsSkarm from "./assets/delar/PoangJaktsSkarm";
-import DeltagarSkarm from "./assets/delar/DeltagarSkarm";
+import Hemskarm from "./assets/delar/Skarmar/Hemskarm";
+import Ansvarskarm from "./assets/delar/Skarmar/Ansvarskarm";
+import Profil from "./assets/delar/Skarmar/Profil";
+import KalenderSkarm from "./assets/delar/Skarmar/KalenderSkarm";
+import NotifikationsSkarm from "./assets/delar/Skarmar/NotifikationsSkarm";
+import PoangJaktsSkarm from "./assets/delar/Skarmar/PoangJaktsSkarm";
+import DeltagarSkarm from "./assets/delar/Skarmar/DeltagarSkarm";
+import RegistreringsSkarm from "./assets/delar/Skarmar/RegistreringsSkarm";
 import * as firebase from "firebase";
 
 const config = {
@@ -20,15 +21,29 @@ const config = {
   measurementId: "G-QLF28SMECC",
 };
 
-firebase.initializeApp(config);
+// Kolla om firebase är initad https://stackoverflow.com/questions/43331011/firebase-app-named-default-already-exists-app-duplicate-app
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+} else {
+  firebase.app();
+}
 
 const Stack = createBottomTabNavigator();
+
+// Lyssnare för inloggning
+firebase.auth().onAuthStateChanged((firebaseUser) => {
+  if (firebaseUser) {
+    console.log(firebaseUser.email, firebaseUser.displayName);
+  } else {
+    console.log("Ej inloggad");
+  }
+});
 
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Hem"
+        initialRouteName={"Hem"}
         screenOptions={{ tabBarVisible: false }}
       >
         <Stack.Screen name="Hem" component={Hemskarm} />
@@ -38,6 +53,7 @@ function App() {
         <Stack.Screen name="Notifikationer" component={NotifikationsSkarm} />
         <Stack.Screen name="PoangJakt" component={PoangJaktsSkarm} />
         <Stack.Screen name="Deltagare" component={DeltagarSkarm} />
+        <Stack.Screen name="Registrera" component={RegistreringsSkarm} />
       </Stack.Navigator>
     </NavigationContainer>
   );

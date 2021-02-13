@@ -1,10 +1,11 @@
 import React from "react";
 import TillbakaSkarm from "./TillbakaSkarm";
 import { Text, View, StyleSheet } from "react-native";
-import Inp from "./Komponenter/StandardInput";
-import Knapp from "./Komponenter/Knapp";
+import Inp from "../Komponenter/StandardInput";
+import Knapp from "../Komponenter/Knapp";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import * as firebase from "firebase";
 
 const validate = Yup.object().shape({
   // Matches() (regex)
@@ -13,12 +14,32 @@ const validate = Yup.object().shape({
   pass: Yup.string().required().min(3).label("Password"),
 });
 
-function KalenderSkarm({ navigation }) {
+// Fixa detta när du kan mer React
+function createUser() {}
+
+function RegistreringsSkarm({ navigation }) {
   return (
     <TillbakaSkarm navigation={navigation} text="Kalender">
       <Formik
         initialValues={{ namn: "", email: "", pass: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          // console.log(values);
+          var n = values.namn;
+          const auth = firebase.auth();
+          const registerPromise = auth
+            .createUserWithEmailAndPassword(values.email, values.pass)
+            .then(function (result) {
+              // Detta verkar inte funka så bra
+              return result.user.updateProfile({ displayName: n });
+            })
+            .then(() => {
+              console.log("Användare skapad");
+              navigation.navigate("Hem");
+            });
+          registerPromise.catch((e) => {
+            console.log(e.message);
+          });
+        }}
         validationSchema={validate}
       >
         {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
@@ -73,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default KalenderSkarm;
+export default RegistreringsSkarm;

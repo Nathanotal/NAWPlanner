@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 15,
     flexDirection: "row",
+    marginTop: 10,
   },
   kategoriText: {
     fontSize: 30,

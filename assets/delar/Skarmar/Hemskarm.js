@@ -1,9 +1,9 @@
 import React from "react";
 import Skarm from "./Skarm";
 import { Text, StyleSheet, View } from "react-native";
-import InfoRuta from "./Komponenter/InfoRuta";
-import InfoRutaBred from "./Komponenter/InfoRutaBred";
-import InfoRutaStor from "./Komponenter/InfoRutaStor";
+import InfoRuta from "../Komponenter/InfoRuta";
+import InfoRutaBred from "../Komponenter/InfoRutaBred";
+import InfoRutaStor from "../Komponenter/InfoRutaStor";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 function Hemskarm({ navigation }) {
