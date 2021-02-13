@@ -9,6 +9,8 @@ import NotifikationsSkarm from "./assets/delar/Skarmar/NotifikationsSkarm";
 import PoangJaktsSkarm from "./assets/delar/Skarmar/PoangJaktsSkarm";
 import DeltagarSkarm from "./assets/delar/Skarmar/DeltagarSkarm";
 import RegistreringsSkarm from "./assets/delar/Skarmar/RegistreringsSkarm";
+import LoginSkarm from "./assets/delar/Skarmar/LoginSkarm";
+import LogOutSkarm from "./assets/delar/Skarmar/LogOutSkarm";
 import * as firebase from "firebase";
 
 const config = {
@@ -43,7 +45,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={"Hem"}
+        initialRouteName={"Login"}
         screenOptions={{ tabBarVisible: false }}
       >
         <Stack.Screen name="Hem" component={Hemskarm} />
@@ -54,6 +56,8 @@ function App() {
         <Stack.Screen name="PoangJakt" component={PoangJaktsSkarm} />
         <Stack.Screen name="Deltagare" component={DeltagarSkarm} />
         <Stack.Screen name="Registrera" component={RegistreringsSkarm} />
+        <Stack.Screen name="Login" component={LoginSkarm} />
+        <Stack.Screen name="LogOut" component={LogOutSkarm} />
       </Stack.Navigator>
     </NavigationContainer>
   );

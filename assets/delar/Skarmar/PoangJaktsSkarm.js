@@ -3,7 +3,11 @@ import TillbakaSkarm from "./TillbakaSkarm";
 
 function PoangJaktsSkarm({ navigation }) {
   return (
-    <TillbakaSkarm navigation={navigation} text="Poängjakt"></TillbakaSkarm>
+    <TillbakaSkarm
+      navigation={navigation}
+      text="Poängjakt"
+      plats="Hem"
+    ></TillbakaSkarm>
   );
 }
 

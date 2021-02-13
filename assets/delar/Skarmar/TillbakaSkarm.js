@@ -3,11 +3,11 @@ import RensadSkarm from "./RensadSkarm";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 
-function TillbakaSkarm({ children, navigation, text }) {
+function TillbakaSkarm({ children, navigation, text, plats }) {
   return (
     <RensadSkarm navigation={navigation} style={styles.container}>
       <View style={{ flex: 1 }}>
-        <TouchableOpacity onPress={() => navigation.navigate("Hem")}>
+        <TouchableOpacity onPress={() => navigation.navigate(plats)}>
           <View style={styles.knapp1}>
             <Ionicons name="arrow-back" size={50} />
           </View>

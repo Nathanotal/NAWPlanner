@@ -6,6 +6,7 @@ function NotifikationsSkarm({ navigation }) {
     <TillbakaSkarm
       navigation={navigation}
       text="Notifikationer"
+      plats="Hem"
     ></TillbakaSkarm>
   );
 }

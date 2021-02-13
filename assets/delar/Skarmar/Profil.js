@@ -7,7 +7,10 @@ function Profil({ navigation }) {
   return (
     <Skarm navigation={navigation}>
       <View style={styles.topScreen}>
-        <TouchableOpacity style={styles.settings}>
+        <TouchableOpacity
+          style={styles.settings}
+          onPress={() => navigation.navigate("LogOut")} // Kan vara trasig, ta bort onpress isåfall
+        >
           <Ionicons name="settings" size={40} />
         </TouchableOpacity>
         <View style={styles.bildBorder}>

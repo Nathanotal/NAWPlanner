@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+    padding: 0,
+    width: "100%",
+    flex: 0.9,
   },
 });
 

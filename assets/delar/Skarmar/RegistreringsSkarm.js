@@ -19,7 +19,7 @@ function createUser() {}
 
 function RegistreringsSkarm({ navigation }) {
   return (
-    <TillbakaSkarm navigation={navigation} text="Kalender">
+    <TillbakaSkarm navigation={navigation} text="Kalender" plats="Login">
       <Formik
         initialValues={{ namn: "", email: "", pass: "" }}
         onSubmit={(values) => {
@@ -44,17 +44,14 @@ function RegistreringsSkarm({ navigation }) {
       >
         {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <View style={styles.infoRuta}>
-            {touched.namn && errors.namn && (
-              <Text style={styles.feltext}>{errors.namn}</Text>
-            )}
             <Inp
               placeholder="Användarnamn"
               autoCapitalize="none"
               onChangeText={handleChange("namn")}
               onBlur={() => setFieldTouched("namn")}
             />
-            {touched.email && errors.email && (
-              <Text style={styles.feltext}>{errors.email}</Text>
+            {touched.namn && errors.namn && (
+              <Text style={styles.feltext}>{errors.namn}</Text>
             )}
             <Inp
               placeholder="Email"
@@ -64,8 +61,8 @@ function RegistreringsSkarm({ navigation }) {
               onChangeText={handleChange("email")}
               onBlur={() => setFieldTouched("email")}
             />
-            {touched.pass && errors.pass && (
-              <Text style={styles.feltext}>{errors.pass}</Text>
+            {touched.email && errors.email && (
+              <Text style={styles.feltext}>{errors.email}</Text>
             )}
             <Inp
               placeholder="Lösenord"
@@ -75,6 +72,9 @@ function RegistreringsSkarm({ navigation }) {
               onChangeText={handleChange("pass")}
               onBlur={() => setFieldTouched("pass")}
             />
+            {touched.pass && errors.pass && (
+              <Text style={styles.feltext}>{errors.pass}</Text>
+            )}
             <Knapp namn="Registrera" onPress={handleSubmit}></Knapp>
           </View>
         )}

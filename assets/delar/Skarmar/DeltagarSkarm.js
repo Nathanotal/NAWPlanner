@@ -3,7 +3,11 @@ import TillbakaSkarm from "./TillbakaSkarm";
 
 function DeltagarSkarm({ navigation }) {
   return (
-    <TillbakaSkarm navigation={navigation} text="Deltagare"></TillbakaSkarm>
+    <TillbakaSkarm
+      navigation={navigation}
+      text="Deltagare"
+      plats="Hem"
+    ></TillbakaSkarm>
   );
 }
 
