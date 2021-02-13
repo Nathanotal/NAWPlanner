@@ -8,6 +8,9 @@ import KalenderSkarm from "./assets/delar/KalenderSkarm";
 import NotifikationsSkarm from "./assets/delar/NotifikationsSkarm";
 import PoangJaktsSkarm from "./assets/delar/PoangJaktsSkarm";
 import DeltagarSkarm from "./assets/delar/DeltagarSkarm";
+import * as firebase from "firebase";
+
+firebase.init;
 
 const Stack = createBottomTabNavigator();
 
