@@ -10,7 +10,17 @@ import PoangJaktsSkarm from "./assets/delar/PoangJaktsSkarm";
 import DeltagarSkarm from "./assets/delar/DeltagarSkarm";
 import * as firebase from "firebase";
 
-firebase.init;
+const config = {
+  apiKey: "AIzaSyApPuZOjMprV6tZrNG3-RAttwoMcx7fzuM",
+  authDomain: "nawplanner.firebaseapp.com",
+  projectId: "nawplanner",
+  storageBucket: "nawplanner.appspot.com",
+  messagingSenderId: "173700469558",
+  appId: "1:173700469558:web:86df6adff8ac442a67d997",
+  measurementId: "G-QLF28SMECC",
+};
+
+firebase.initializeApp(config);
 
 const Stack = createBottomTabNavigator();
 

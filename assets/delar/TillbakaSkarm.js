@@ -3,15 +3,18 @@ import RensadSkarm from "./RensadSkarm";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 
-function TillbakaSkarm({ navigation, text }) {
+function TillbakaSkarm({ children, navigation, text }) {
   return (
     <RensadSkarm navigation={navigation} style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("Hem")}>
-        <View style={styles.knapp1}>
-          <Ionicons name="arrow-back" size={50} />
-        </View>
-      </TouchableOpacity>
-      <Text style={styles.rubrik}>{text}</Text>
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity onPress={() => navigation.navigate("Hem")}>
+          <View style={styles.knapp1}>
+            <Ionicons name="arrow-back" size={50} />
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.rubrik}>{text}</Text>
+        {children}
+      </View>
     </RensadSkarm>
   );
 }
@@ -27,7 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     alignSelf: "center",
-    paddingTop: 150,
+    paddingTop: 0,
   },
   knapp1: {
     justifyContent: "center",
