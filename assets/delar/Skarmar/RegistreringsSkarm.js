@@ -19,7 +19,7 @@ function createUser() {}
 
 function RegistreringsSkarm({ navigation }) {
   return (
-    <TillbakaSkarm navigation={navigation} text="Kalender" plats="Login">
+    <TillbakaSkarm navigation={navigation} text="Register" plats="Login">
       <Formik
         initialValues={{ namn: "", email: "", pass: "" }}
         onSubmit={(values) => {
@@ -45,7 +45,7 @@ function RegistreringsSkarm({ navigation }) {
         {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
           <View style={styles.infoRuta}>
             <Inp
-              placeholder="Användarnamn"
+              placeholder="Username"
               autoCapitalize="none"
               onChangeText={handleChange("namn")}
               onBlur={() => setFieldTouched("namn")}
@@ -65,7 +65,7 @@ function RegistreringsSkarm({ navigation }) {
               <Text style={styles.feltext}>{errors.email}</Text>
             )}
             <Inp
-              placeholder="Lösenord"
+              placeholder="Password"
               autoCorrect={false}
               textContentType="password"
               secureTextEntry={true}
@@ -75,7 +75,7 @@ function RegistreringsSkarm({ navigation }) {
             {touched.pass && errors.pass && (
               <Text style={styles.feltext}>{errors.pass}</Text>
             )}
-            <Knapp namn="Registrera" onPress={handleSubmit}></Knapp>
+            <Knapp namn="Register" onPress={handleSubmit}></Knapp>
           </View>
         )}
       </Formik>

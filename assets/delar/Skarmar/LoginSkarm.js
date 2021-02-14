@@ -1,11 +1,14 @@
 import React from "react";
-import TillbakaSkarm from "./TillbakaSkarm";
 import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import Inp from "../Komponenter/StandardInput";
 import Knapp from "../Komponenter/Knapp";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as firebase from "firebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+// variable to keep track of if you should log in
+var login = true;
 
 const validate = Yup.object().shape({
   // Matches() (regex)
@@ -16,18 +19,44 @@ const validate = Yup.object().shape({
 
 // Check if user is logged in, in that case go to homescreen
 
+async function checkCredentials(n) {
+  await AsyncStorage.multiGet(["email", "pass"]).then((result) => {
+    const email = result[0][1];
+    const pass = result[1][1];
+    const c = { email, pass };
+    if (email && pass) {
+      n.navigate("LoggingIn", {
+        navig: n,
+        cred: c,
+      });
+    }
+  });
+}
+
 // Fixa formulär som registrering, fixa utlogg, fixa routing
 function LoginSkarm({ navigation }) {
   return (
     <SafeAreaView>
-      <Text style={styles.infoText}>Login</Text>
+      <Text style={styles.rubrik}>Välkommen</Text>
       <Formik
         initialValues={{ email: "", pass: "" }}
-        onSubmit={(values) => {
-          console.log(values.email, values.pass);
+        onSubmit={async (values) => {
+          //console.log(values.email, values.pass);
           const auth = firebase.auth();
           const loginPromise = auth
             .signInWithEmailAndPassword(values.email, values.pass)
+            .then(async () => {
+              // Spara credentials
+              try {
+                await AsyncStorage.multiSet(
+                  ["email", "pass"],
+                  [values.email, values.pass]
+                );
+                console.log("Sparade email och pass");
+              } catch {
+                console.log("Kunde inte spara email och/eller pass");
+              }
+            })
             .then(() => {
               console.log("Inloggad");
               navigation.navigate("Hem");
@@ -63,21 +92,43 @@ function LoginSkarm({ navigation }) {
               <Text style={styles.feltext}>{errors.pass}</Text>
             )}
             <Knapp namn="Login" onPress={handleSubmit}></Knapp>
+            <View style={styles.registerBox}>
+              <Text style={styles.infoText}>No Account?</Text>
+              <Knapp
+                namn="Register"
+                onPress={() => navigation.navigate("Registrera")}
+              ></Knapp>
+            </View>
           </View>
         )}
       </Formik>
+      <Knapp namn="" onPress={checkCredentials(navigation)}></Knapp>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  infoRuta: {
+    alignItems: "center",
+    margin: 10,
+    flexDirection: "column",
+  },
+  registerBox: {
+    alignSelf: "flex-start",
+    alignSelf: "center",
+    marginTop: "70%",
+  },
   infoText: {
     alignSelf: "center",
-    padding: 20,
-    fontWeight: "600",
-    fontSize: 20,
   },
-  infoRuta: {},
+  rubrik: {
+    padding: 20,
+    fontWeight: "bold",
+    fontSize: 30,
+    alignSelf: "center",
+    paddingTop: 40,
+    paddingBottom: 10,
+  },
 });
 
 export default LoginSkarm;
