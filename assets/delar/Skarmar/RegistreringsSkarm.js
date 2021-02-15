@@ -6,6 +6,7 @@ import Knapp from "../Komponenter/Knapp";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import * as firebase from "firebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const validate = Yup.object().shape({
   // Matches() (regex)
@@ -25,12 +26,25 @@ function RegistreringsSkarm({ navigation }) {
         onSubmit={(values) => {
           // console.log(values);
           var n = values.namn;
+          var e = values.email;
+          var p = values.pass;
           const auth = firebase.auth();
           const registerPromise = auth
             .createUserWithEmailAndPassword(values.email, values.pass)
             .then(function (result) {
               // Detta verkar inte funka så bra
               return result.user.updateProfile({ displayName: n });
+            })
+            .then(async () => {
+              // Spara credentials
+              console.log(e, p);
+              try {
+                await AsyncStorage.setItem("email", e);
+                await AsyncStorage.setItem("pass", p);
+                console.log("Sparade email och pass");
+              } catch (error) {
+                console.log("Kunde inte spara email och/eller pass", error);
+              }
             })
             .then(() => {
               console.log("Användare skapad");

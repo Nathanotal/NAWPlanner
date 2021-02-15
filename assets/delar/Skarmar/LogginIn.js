@@ -2,8 +2,9 @@ import React from "react";
 import { Text, View, StyleSheet, SafeAreaView } from "react-native";
 import Knapp from "../Komponenter/Knapp";
 import * as firebase from "firebase";
+import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
 
-async function logga(navig, cred) {
+async function logga(navigation, cred) {
   const auth = firebase.auth();
   const loginPromise = auth
     .signInWithEmailAndPassword(cred.email, cred.pass)
@@ -16,16 +17,12 @@ async function logga(navig, cred) {
   });
 }
 
-function LogginIn({ navig, cred }) {
-  let a = true;
-  if (!navig || !cred) {
-    console.log("Undefined credentials:", cred);
-    a = false;
-  }
+function LogginIn({ route, navigation }) {
+  const { cred } = route.params;
+  logga(navigation, cred);
   return (
     <SafeAreaView>
       <Text style={styles.rubrik}>Loggar in...</Text>
-      {a && <Knapp namn="Loggar in..." onPress={logga(navig, cred)}></Knapp>}
     </SafeAreaView>
   );
 }

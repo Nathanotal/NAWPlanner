@@ -26,7 +26,6 @@ async function checkCredentials(n) {
     const c = { email, pass };
     if (email && pass) {
       n.navigate("LoggingIn", {
-        navig: n,
         cred: c,
       });
     }
@@ -35,6 +34,7 @@ async function checkCredentials(n) {
 
 // Fixa formulär som registrering, fixa utlogg, fixa routing
 function LoginSkarm({ navigation }) {
+  checkCredentials(navigation);
   return (
     <SafeAreaView>
       <Text style={styles.rubrik}>Välkommen</Text>
@@ -48,10 +48,8 @@ function LoginSkarm({ navigation }) {
             .then(async () => {
               // Spara credentials
               try {
-                await AsyncStorage.multiSet(
-                  ["email", "pass"],
-                  [values.email, values.pass]
-                );
+                await AsyncStorage.setItem("email", values.email);
+                await AsyncStorage.setItem("pass", values.pass);
                 console.log("Sparade email och pass");
               } catch {
                 console.log("Kunde inte spara email och/eller pass");
@@ -61,6 +59,7 @@ function LoginSkarm({ navigation }) {
               console.log("Inloggad");
               navigation.navigate("Hem");
             });
+
           loginPromise.catch((e) => {
             console.log(e.message);
           });
@@ -102,7 +101,6 @@ function LoginSkarm({ navigation }) {
           </View>
         )}
       </Formik>
-      <Knapp namn="" onPress={checkCredentials(navigation)}></Knapp>
     </SafeAreaView>
   );
 }
