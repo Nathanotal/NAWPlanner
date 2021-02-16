@@ -10,7 +10,7 @@ import PoangJaktsSkarm from "./assets/delar/Skarmar/PoangJaktsSkarm";
 import DeltagarSkarm from "./assets/delar/Skarmar/DeltagarSkarm";
 import RegistreringsSkarm from "./assets/delar/Skarmar/RegistreringsSkarm";
 import LoginSkarm from "./assets/delar/Skarmar/LoginSkarm";
-import LogOutSkarm from "./assets/delar/Skarmar/LogOutSkarm";
+import InstallningarSkarm from "./assets/delar/Skarmar/InstallningarSkarm";
 import * as firebase from "firebase";
 import LogginIn from "./assets/delar/Skarmar/LogginIn";
 
@@ -52,13 +52,13 @@ function App() {
         <Stack.Screen name="Hem" component={Hemskarm} />
         <Stack.Screen name="Ansvar" component={Ansvarskarm} />
         <Stack.Screen name="Profil" component={Profil} />
-        <Stack.Screen name="Kalender" component={LoginSkarm} />
+        <Stack.Screen name="Kalender" component={KalenderSkarm} />
         <Stack.Screen name="Notifikationer" component={NotifikationsSkarm} />
         <Stack.Screen name="PoangJakt" component={PoangJaktsSkarm} />
         <Stack.Screen name="Deltagare" component={DeltagarSkarm} />
         <Stack.Screen name="Registrera" component={RegistreringsSkarm} />
         <Stack.Screen name="Login" component={LoginSkarm} />
-        <Stack.Screen name="LogOut" component={LogOutSkarm} />
+        <Stack.Screen name="Installningar" component={InstallningarSkarm} />
         <Stack.Screen name="LoggingIn" component={LogginIn} />
       </Stack.Navigator>
     </NavigationContainer>

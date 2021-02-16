@@ -9,7 +9,7 @@ function Profil({ navigation }) {
       <View style={styles.topScreen}>
         <TouchableOpacity
           style={styles.settings}
-          onPress={() => navigation.navigate("LogOut")} // Kan vara trasig, ta bort onpress isåfall
+          onPress={() => navigation.navigate("Installningar")}
         >
           <Ionicons name="settings" size={40} />
         </TouchableOpacity>
