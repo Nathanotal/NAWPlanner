@@ -11,6 +11,7 @@ import DeltagarSkarm from "./assets/delar/Skarmar/DeltagarSkarm";
 import RegistreringsSkarm from "./assets/delar/Skarmar/RegistreringsSkarm";
 import LoginSkarm from "./assets/delar/Skarmar/LoginSkarm";
 import LogOutSkarm from "./assets/delar/Skarmar/LogOutSkarm";
+import LaggTillToDoSkarm from "./assets/delar/Skarmar/LaggTillToDoSkarm";
 import * as firebase from "firebase";
 import LogginIn from "./assets/delar/Skarmar/LogginIn";
 
@@ -60,6 +61,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginSkarm} />
         <Stack.Screen name="LogOut" component={LogOutSkarm} />
         <Stack.Screen name="LoggingIn" component={LogginIn} />
+        <Stack.Screen name="LaggTillToDo" component={LaggTillToDoSkarm} />
       </Stack.Navigator>
     </NavigationContainer>
   );

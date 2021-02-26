@@ -32,7 +32,7 @@ async function checkCredentials(n) {
   });
 }
 
-// Fixa formulär som registrering, fixa utlogg, fixa routing
+// This can be made much better with a useState Hook, but it works so I will focus on other things
 function LoginSkarm({ navigation }) {
   checkCredentials(navigation);
   return (
