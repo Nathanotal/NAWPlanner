@@ -3,18 +3,19 @@ import Knapp from "../Komponenter/Knapp";
 import MyForm from "../Komponenter/MyForm";
 import MyFormField from "../Komponenter/MyFormField";
 import Skarm from "./Skarm";
-import { Text, StyleSheet } from "react-native";
+import { View, StyleSheet, SafeAreaView, TouchableOpacity } from "react-native";
 import * as Yup from "yup";
 import MyFormButton from "../Komponenter/MyFormButton";
 import Temp from "./Temp";
 import TillbakaSkarm from "./TillbakaSkarm";
+import { Ionicons, Feather } from "@expo/vector-icons";
 
 const validate = Yup.object().shape({
   // Matches() (regex)
   name: Yup.string().required().label("name"),
 });
 
-function handleSubmit(values, navigation) {
+function handleSubmit(values, onPress) {
   const { name } = values;
   console.log(name);
   Temp.push({
@@ -22,32 +23,39 @@ function handleSubmit(values, navigation) {
     color: "blue",
     todos: [],
   });
-  navigation.navigate("Ansvar");
+  onPress();
 }
 
-function LaggTillToDoSkarm({ navigation }) {
+function LaggTillToDoSkarm({ onPress }) {
   return (
-    <TillbakaSkarm
-      text="New Item"
-      plats={"Ansvar"}
-      navigation={navigation}
-      style={styles.container}
-    >
-      <MyForm
-        initialValues={{ name: "" }}
-        onSubmit={(values) => handleSubmit(values, navigation)}
-        validationSchema={validate}
-      >
-        <MyFormField name="name" placeholder="Name" textContentType="name" />
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.back} onPress={onPress}>
+        <Ionicons name="arrow-back" size={50} />
+      </TouchableOpacity>
 
-        <MyFormButton namn="Add"></MyFormButton>
-      </MyForm>
-    </TillbakaSkarm>
+      <View style={styles.main}>
+        <MyForm
+          initialValues={{ name: "" }}
+          onSubmit={(values) => handleSubmit(values, onPress)}
+          validationSchema={validate}
+        >
+          <MyFormField name="name" placeholder="Name" textContentType="name" />
+
+          <MyFormButton namn="Add"></MyFormButton>
+        </MyForm>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 0.8,
+    margin: 10,
+  },
   container: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
   rubrik: {
@@ -56,6 +64,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 25,
     marginBottom: "5%",
+  },
+  back: {
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: 32,
+    left: 10,
+    //backgroundColor: "lightgray",
+    borderRadius: 20,
+    width: 60,
+    height: 60,
+    margin: 2,
   },
 });
 

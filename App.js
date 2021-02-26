@@ -10,8 +10,6 @@ import PoangJaktsSkarm from "./assets/delar/Skarmar/PoangJaktsSkarm";
 import DeltagarSkarm from "./assets/delar/Skarmar/DeltagarSkarm";
 import RegistreringsSkarm from "./assets/delar/Skarmar/RegistreringsSkarm";
 import LoginSkarm from "./assets/delar/Skarmar/LoginSkarm";
-import LogOutSkarm from "./assets/delar/Skarmar/LogOutSkarm";
-import LaggTillToDoSkarm from "./assets/delar/Skarmar/LaggTillToDoSkarm";
 import InstallningarSkarm from "./assets/delar/Skarmar/InstallningarSkarm";
 import * as firebase from "firebase";
 import LogginIn from "./assets/delar/Skarmar/LogginIn";
@@ -62,7 +60,6 @@ function App() {
         <Stack.Screen name="Login" component={LoginSkarm} />
         <Stack.Screen name="Installningar" component={InstallningarSkarm} />
         <Stack.Screen name="LoggingIn" component={LogginIn} />
-        <Stack.Screen name="LaggTillToDo" component={LaggTillToDoSkarm} />
       </Stack.Navigator>
     </NavigationContainer>
   );

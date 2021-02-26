@@ -3,9 +3,9 @@ import RensadSkarm from "./RensadSkarm";
 import { Ionicons } from "@expo/vector-icons";
 import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 
-function TillbakaSkarm({ children, navigation, text, plats, style }) {
+function TillbakaSkarm({ children, navigation, text, plats }) {
   return (
-    <RensadSkarm navigation={navigation} style={[styles.container, style]}>
+    <RensadSkarm navigation={navigation} style={styles.container}>
       <View style={{ flex: 1 }}>
         <TouchableOpacity onPress={() => navigation.navigate(plats)}>
           <View style={styles.knapp1}>

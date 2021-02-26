@@ -26,19 +26,19 @@ export default Temp = [
     color: "lightblue",
     todos: [
       {
-        title: "fixa mat",
+        title: "fixa mat2",
         completed: false,
       },
       {
-        title: "fixa bad",
+        title: "fixa bad2",
         completed: true,
       },
       {
-        title: "fixa tjat",
+        title: "fixa tjat2",
         completed: true,
       },
       {
-        title: "fixa prat",
+        title: "fixa prat2",
         completed: false,
       },
     ],

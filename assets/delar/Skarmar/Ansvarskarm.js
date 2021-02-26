@@ -1,21 +1,36 @@
 import React from "react";
 import Skarm from "./Skarm";
-import { Text, StyleSheet, FlatList, View } from "react-native";
+import { Text, StyleSheet, FlatList, View, Modal } from "react-native";
 import colors from "../../colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import Temp from "./Temp";
 import ListEntry from "../Komponenter/ListEntry";
+import LaggTillToDoSkarm from "./LaggTillToDoSkarm";
+import { useState } from "react";
+
+const addEntry = (list) => {};
 
 function Ansvarskarm({ navigation }) {
+  const tData = Temp;
+  const [showAdd, toggleAdd] = useState(false);
   return (
     <Skarm navigation={navigation}>
       <View style={styles.container}>
+        <Modal
+          animationType="slide"
+          visible={showAdd}
+          onRequestClose={() => toggleAdd(false)}
+        >
+          <LaggTillToDoSkarm
+            onPress={() => toggleAdd(false)}
+          ></LaggTillToDoSkarm>
+        </Modal>
         <Text style={styles.rubrik}>To-Do</Text>
         <View style={styles.half}>
           <TouchableOpacity
             style={styles.add}
-            onPress={() => navigation.navigate("LaggTillToDo")}
+            onPress={() => toggleAdd(!showAdd)}
           >
             <Feather name="plus" size={15} color={colors.secondary} />
           </TouchableOpacity>
@@ -25,7 +40,7 @@ function Ansvarskarm({ navigation }) {
         <View style={styles.half}>
           <FlatList
             style={{ flexGrow: 1 }}
-            data={Temp}
+            data={tData}
             keyExtractor={(item) => item.name}
             horizontal={false}
             showsVerticalScrollIndicator={false}
