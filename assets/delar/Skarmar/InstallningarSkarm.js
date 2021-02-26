@@ -5,7 +5,7 @@ import Knapp from "../Komponenter/Knapp";
 import * as firebase from "firebase";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function LogOutSkarm({ navigation }) {
+function InstallningarSkarm({ navigation }) {
   return (
     <TillbakaSkarm navigation={navigation} text="Logout" plats="Profil">
       <View style={styles.fin}>
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogOutSkarm;
+export default InstallningarSkarm;
