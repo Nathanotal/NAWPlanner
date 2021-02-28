@@ -13,6 +13,7 @@ import LoginSkarm from "./assets/delar/Skarmar/LoginSkarm";
 import InstallningarSkarm from "./assets/delar/Skarmar/InstallningarSkarm";
 import * as firebase from "firebase";
 import LogginIn from "./assets/delar/Skarmar/LogginIn";
+import Database from "./assets/delar/Skarmar/DatabaseSkarm";
 
 const config = {
   apiKey: "AIzaSyApPuZOjMprV6tZrNG3-RAttwoMcx7fzuM",
@@ -60,6 +61,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginSkarm} />
         <Stack.Screen name="Installningar" component={InstallningarSkarm} />
         <Stack.Screen name="LoggingIn" component={LogginIn} />
+        <Stack.Screen name="Database" component={Database} />
       </Stack.Navigator>
     </NavigationContainer>
   );

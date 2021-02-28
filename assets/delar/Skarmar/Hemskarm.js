@@ -11,7 +11,7 @@ function Hemskarm({ navigation }) {
     <Skarm style={styles.container} navigation={navigation}>
       <Text style={styles.rubrik}>Hem</Text>
       <View style={styles.litenContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate("Kalender")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Database")}>
           <InfoRuta></InfoRuta>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Notifikationer")}>
