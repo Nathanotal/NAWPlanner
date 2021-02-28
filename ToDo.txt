@@ -1,4 +1,8 @@
 Snart:
+Gör todo snyggare
+Implementera tillägg av små steg i todo
+Koppla todo med firebase
+Undersök skapa grupp
 Gör en "widgetkomponent" till hemsidan
 
 Senare:
